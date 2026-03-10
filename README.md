@@ -47,6 +47,9 @@ AND Body_mass_index < 25
 AND Absenteeism_time_in_hours < (SELECT Avg(Absenteeism_time_in_hours) From Absenteeism_at_work)
 ```
 
+<img width="1664" height="664" alt="image" src="https://github.com/user-attachments/assets/1d1a6918-07e1-43dd-8061-8a4e7b40c629" />
+
+
 This table allow HR to look at the 111 employees that qualify as "Healthy"
 
 What qualifies an employee as "Healthy"?
