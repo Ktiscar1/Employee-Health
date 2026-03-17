@@ -103,6 +103,6 @@ LEFT JOIN Reasons r ON
 a.Reason_for_absence = r.Number
 ```
 
-
+<img width="1770" height="548" alt="image" src="https://github.com/user-attachments/assets/7afb4a0e-4714-47b4-b0d9-cdc72d3ae20f" />
 
 
