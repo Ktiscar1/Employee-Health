@@ -52,8 +52,57 @@ AND Absenteeism_time_in_hours < (SELECT Avg(Absenteeism_time_in_hours) From Abse
 
 This table allow HR to look at the 111 employees that qualify as "Healthy"
 
-What qualifies an employee as "Healthy"?
-- No smoker
-- No drinker
+** What qualifies an employee as "Healthy"? **
+- No smoker.
+- No drinker.
 - BMI needs to be in a "healthy" range.
 - The employee need to have less absences than the average absences from all employees.
+
+----------------------------------------------------------------------------------------------
+
+- Budget = $938,211.
+- 111 employes qualify as "healthy."
+- 686 non smokers.
+
+- 0.6575262110338641 increase per hour = $938,211 budget / 1,426,880.
+- 1,426,880 = 2,080 hours in a year x 686 employees.
+- 2,080 hours in a year that 686 employees worked = 40 hours a week x 52 weeks in a year.
+- 40 hours a week = 8 hours x 5 days a week.
+
+This a yearly amount is a total of $1,414.4 per employee.
+
+----------------------------------------------------------------------------------------------
+
+# Query optimization:
+
+A query optimization is done to display HR only relevant information to their department:
+ - Only relkevant columns are displayed. 
+ - A new column 'BMI_Category' is created categorizing in a 'readable' manner the information.
+ - A new column 'Season_Names' is created to categorized the seasons.
+
+```SQL
+SELECT 
+a.ID, r.Reason, Month_of_absence, body_mass_index,
+CASE WHEN Body_mass_index < 18.5 THEN 'Underweight'
+	WHEN Body_mass_index BETWEEN 18.5 AND 25 THEN 'Healthy weight'
+	WHEN Body_mass_index BETWEEN 25 AND 30 THEN 'Overweight'
+	WHEN Body_mass_index > 30 THEN 'Obese'
+	ELSE 'Unkown' END AS BMI_Category,
+CASE WHEN Month_of_absence IN (12,1,2) THEN 'Winter'
+	WHEN Month_of_absence IN (3,4,5) THEN 'Spring'
+	WHEN Month_of_absence IN (6,7,8) THEN 'Summer'
+	WHEN Month_of_absence IN (9,10,11) THEN 'Fall'
+	ELSE 'Unkown' END AS Season_Names,
+Month_of_absence, Day_of_the_week, Transportation_expense, Education,
+Son, Social_drinker, Social_smoker, Pet, Disciplinary_failure, Age,
+Work_load_Average_day, Absenteeism_time_in_hours
+FROM Absenteeism_at_work a
+LEFT JOIN compensation b
+ON a.ID = b.ID
+LEFT JOIN Reasons r ON
+a.Reason_for_absence = r.Number
+```
+
+
+
+
