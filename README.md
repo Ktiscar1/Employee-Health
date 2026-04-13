@@ -8,13 +8,14 @@ Data driven evaluation to determine bonus and incentives for healthy employees. 
     * Insurance Budget of $983,221 for all non-smoker.
 * Dashboard for HR to understand Absenteeism at work based on approved wireframe.
 
-# Steps (PlaceHolder)
+# Steps
 
 Using SQL Sever Managment import flat files (Absenteeism_at_work, compensation & Reasons). *NOTE: REFRESH WHEN ADDING TABLES - ctrl + Shift + R*
 Connect tables using SQL querries.
 1. Connect Absenteeism_at_work with compensation using left join (ID)
 2. Join Reasons
 3. Create a table that allows HR to see "Healthiest Employees"
+4. Create Report with the relevant information.
 
 # 1. Connect Absenteeism_at_work with compensation using left join (ID)
 
@@ -105,4 +106,16 @@ a.Reason_for_absence = r.Number
 
 <img width="1770" height="548" alt="image" src="https://github.com/user-attachments/assets/7afb4a0e-4714-47b4-b0d9-cdc72d3ae20f" />
 
+
+# 4. Report for HR & Summary
+
+<img width="984" height="1109" alt="image" src="https://github.com/user-attachments/assets/50c55290-0927-49ec-8738-e18d8ebee5dc" />
+
+
+- 6.92 hours are the average absenteeism.
+- 5124 hours are the total sum of absenteism.
+- Healhty employees get an increase of $0.65 per hour.
+- 686 employees are non smokers.
+- "Medical Reason" is the most used reason for absenteeism.
+- "Pregnancy," "Blood Diseases," and "Neoplasm" are the least used reasons for absenteeism.
 
